@@ -1,0 +1,100 @@
+/* Bambalapitiya Family Theater Styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #0D1321;
+  color: #EAEAEA;
+  text-align: center;
+  margin: 0;
+}
+
+h1 {
+  color: #FF69B4; /* Hot Pink */
+  text-shadow: 0 0 10px #FF69B480;
+  font-size: 28px;
+}
+
+.theater-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.seat-layout {
+  display: grid;
+  gap: 8px; /* Slightly larger gap */
+  padding: 20px;
+  background: rgba(255, 105, 180, 0.1);
+  border-radius: 10px;
+  border: 2px solid #FF69B4;
+  box-shadow: 0 0 15px #FF69B480;
+  width: 100vw;
+  max-width: 100%;
+}
+
+.seat {
+  width: 45px; /* Wider seats */
+  height: 45px;
+  background-color: #222;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid #FF69B4;
+  box-shadow: 0 0 5px #FF69B480;
+}
+
+.seat:hover {
+  background-color: #FF69B4;
+  color: #0D1321;
+}
+
+.seat.selected {
+  background-color: #9370DB; /* Medium Purple */
+  border-color: #9370DB;
+  box-shadow: 0 0 15px #9370DB80;
+}
+
+.aisle {
+  width: 60px; /* Wider aisle */
+  height: 45px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.screen {
+  width: 80%;
+  height: 50px;
+  background: linear-gradient(to bottom, #FF69B4, #9370DB);
+  margin: 20px 0;
+  line-height: 50px;
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #FF69B480;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px 24px;
+  background: linear-gradient(45deg, #FF69B4, #9370DB);
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #9370DB80;
+}
