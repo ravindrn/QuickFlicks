@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Theater - QuickFlicks</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="Logos/1.jpeg" type="image/jpeg">
+</head>
+<body>
+  <header>
+    <img class="logo" src="Logos/logo-removebg-preview.png" alt="QuickFlicks Logo">
+    <div class="header-1">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="movies.html" class="nav-link">Movies</a>
+      <a href="locations.html" class="nav-link">Locations</a>
+    </div>
+    <div class="header-2">
+      <a href="movies.html" class="nav-link">Buy Tickets</a>
+      <a href="login.html" class="nav-link">Login</a>
+      <a href="register.html" class="nav-link">Register</a>
+    </div>
+  </header>
+
+  <main class="theater-selection">
+    <h1>Select Theater for <span id="selected-movie">Movie</span> at <span id="selected-cinema">Cinema</span></h1>
+    <div class="theater-options" id="theater-container">
+      <!-- Theater options will be loaded here -->
+    </div>
+  </main>
+
+  <script>
+    // Theater pricing configuration (in LKR)
+    const theaterPricing = {
+      malabe: {
+        imax: { standard: 1500, premium: 2000 },
+        '3d': { standard: 1200, premium: 1600 },
+        standard: { standard: 800, premium: 1000 }
+      },
+      bambalapitiya: {
+        '4k': { standard: 1800, premium: 2200 },
+        '3d': { standard: 1300, premium: 1700 },
+        family: { standard: 1000, child: 700 },
+        vip: { standard: 2500 }
+      },
+      negombo: {
+        '3d': { standard: 1100, premium: 1500 },
+        '2d': { standard: 800 }
+      }
+    };
+
+    // Sample showtimes data
+    const showtimesData = {
+      malabe: {
+        imax: ["10:00 AM", "2:30 PM", "7:00 PM"],
+        '3d': ["11:00 AM", "3:30 PM", "8:00 PM"],
+        standard: ["9:30 AM", "1:00 PM", "5:30 PM"]
+      },
+      bambalapitiya: {
+        '4k': ["10:30 AM", "3:00 PM", "7:30 PM"],
+        '3d': ["11:30 AM", "4:00 PM", "8:30 PM"],
+        family: ["9:00 AM", "12:30 PM", "5:00 PM"],
+        vip: ["8:00 PM", "10:30 PM"]
+      },
+      negombo: {
+        '3d': ["10:00 AM", "2:00 PM", "6:00 PM", "9:30 PM"],
+        '2d': ["11:00 AM", "3:00 PM", "7:00 PM"]
+      }
+    };
+
+    // Get parameters from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const movieTitle = urlParams.get('movie');
+    const cinema = urlParams.get('cinema');
+    
+    if (movieTitle) {
+      document.getElementById('selected-movie').textContent = decodeURIComponent(movieTitle);
+    }
+    
+    if (cinema) {
+      const cinemaName = {
+        malabe: 'QuickFlicks Malabe',
+        bambalapitiya: 'QuickFlicks Bambalapitiya',
+        negombo: 'QuickFlicks Negombo'
+      }[cinema] || 'Cinema';
+      
+      document.getElementById('selected-cinema').textContent = cinemaName;
+      loadTheaters(cinema, movieTitle);
+    }
+    
+    function loadTheaters(cinema, movieTitle) {
+      const theaters = {
+        malabe: [
+          { id: 'imax', name: 'IMAX Experience', seats: 250 },
+          { id: '3d', name: '3D Cinema', seats: 200 },
+          { id: 'standard', name: 'Standard', seats: 150 }
+        ],
+        bambalapitiya: [
+          { id: '4k', name: 'Premium 4K Dolby', seats: 220 },
+          { id: '3d', name: 'Standard 3D', seats: 180 },
+          { id: 'family', name: 'Family Friendly', seats: 160 },
+          { id: 'vip', name: 'VIP Lounge', seats: 100 }
+        ],
+        negombo: [
+          { id: '3d', name: 'Premium 3D', seats: 200 },
+          { id: '2d', name: 'Standard 2D', seats: 150 }
+        ]
+      };
+      
+      const container = document.getElementById('theater-container');
+      container.innerHTML = '';
+      
+      theaters[cinema].forEach(theater => {
+        const prices = theaterPricing[cinema][theater.id];
+        const showtimes = showtimesData[cinema][theater.id] || [];
+        
+        let priceHTML = '<div class="pricing-info"><h3>Pricing:</h3><ul>';
+        for (const [type, price] of Object.entries(prices)) {
+          priceHTML += `<li>${type.charAt(0).toUpperCase() + type.slice(1)}: Rs. ${price.toLocaleString()}</li>`;
+        }
+        priceHTML += '</ul></div>';
+        
+        let showtimesHTML = '';
+        if (showtimes.length > 0) {
+          showtimesHTML = `
+            <div class="showtimes-container">
+              <h3>Available Showtimes:</h3>
+              <div class="time-slots">
+                ${showtimes.map(time => `
+                  <a href="theaters/${cinema}-${theater.id}.html?movie=${encodeURIComponent(movieTitle)}&time=${encodeURIComponent(time)}" 
+                     class="time-slot">
+                    ${time}
+                  </a>
+                `).join('')}
+              </div>
+            </div>
+          `;
+        } else {
+          showtimesHTML = '<p class="no-showtimes">No showtimes available</p>';
+        }
+        
+        const theaterCard = document.createElement('div');
+        theaterCard.className = 'theater-card';
+        theaterCard.innerHTML = `
+          <h2>${theater.name}</h2>
+          <div class="theater-meta">
+            <span><i class="fas fa-chair"></i> ${theater.seats} seats</span>
+          </div>
+          ${priceHTML}
+          ${showtimesHTML}
+        `;
+        
+        container.appendChild(theaterCard);
+      });
+    }
+  </script>
+</body>
+</html>

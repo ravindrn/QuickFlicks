@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Review - QuickFlicks</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <img class="logo" src="Logos/logo-removebg-preview.png" alt="QuickFlicks Logo">
+    <div class="header-1">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="movies.html" class="nav-link">Movies</a>
+      <a href="locations.html" class="nav-link">Locations</a>
+    </div>
+    <div class="header-2">
+      <a href="movies.html" class="nav-link">Buy Tickets</a>
+      <a href="login.html" class="nav-link">Login</a>
+      <a href="register.html" class="nav-link">Register</a>
+    </div>
+  </header>
+
+  <main class="review-container">
+    <div class="review-card">
+      <h2>How was your experience?</h2>
+      <p>We'd love to hear your feedback about <span id="review-movie"></span></p>
+      
+      <div class="rating">
+        <i class="far fa-star" data-rating="1"></i>
+        <i class="far fa-star" data-rating="2"></i>
+        <i class="far fa-star" data-rating="3"></i>
+        <i class="far fa-star" data-rating="4"></i>
+        <i class="far fa-star" data-rating="5"></i>
+      </div>
+      
+      <textarea id="review-text" placeholder="Tell us about your experience..."></textarea>
+      
+      <button id="submit-review" class="btn-primary">Submit Review</button>
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Set movie title from booking details
+      const bookingDetails = JSON.parse(sessionStorage.getItem('bookingDetails'));
+      if (bookingDetails && bookingDetails.movieTitle) {
+        document.getElementById('review-movie').textContent = bookingDetails.movieTitle;
+      }
+
+      // Rating system
+      let selectedRating = 0;
+      const stars = document.querySelectorAll('.rating i');
+      
+      stars.forEach(star => {
+        star.addEventListener('click', function() {
+          selectedRating = parseInt(this.getAttribute('data-rating'));
+          stars.forEach((s, idx) => {
+            s.classList.toggle('fas', idx < selectedRating);
+            s.classList.toggle('far', idx >= selectedRating);
+          });
+        });
+      });
+
+      // Submit review
+      document.getElementById('submit-review').addEventListener('click', function() {
+        const reviewText = document.getElementById('review-text').value;
+        
+        // In a real app, you would send this to your server
+        const reviewData = {
+          movie: bookingDetails.movieTitle,
+          rating: selectedRating,
+          review: reviewText,
+          date: new Date().toISOString()
+        };
+        
+        // Store locally for demo
+        let reviews = JSON.parse(localStorage.getItem('quickflicksReviews') || '[]');
+        reviews.push(reviewData);
+        localStorage.setItem('quickflicksReviews', JSON.stringify(reviews));
+        
+        // Redirect to home
+        window.location.href = 'index.html';
+      });
+    });
+  </script>
+</body>
+</html>

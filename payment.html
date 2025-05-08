@@ -1,0 +1,66 @@
+<!-- payment.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickFlicks - Payment</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <img class="logo" src="Logos/logo-removebg-preview.png" alt="QuickFlicks Logo">
+    <div class="header-1">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="movies.html" class="nav-link">Movies</a>
+      <a href="locations.html" class="nav-link">Locations</a>
+    </div>
+    <div class="header-2">
+      <a href="movies.html" class="nav-link">Buy Tickets</a>
+      <a href="login.html" class="nav-link">Login</a>
+      <a href="register.html" class="nav-link">Register</a>
+    </div>
+  </header>
+
+    <main class="payment-container">
+        <h2>Complete Your Booking</h2>
+        <!-- Modify the booking summary section -->
+          <div class="booking-summary">
+            <h3>Booking Details</h3>
+            <p id="movie-title">Movie: </p>
+            <p id="showtime">Showtime: </p>
+            <p id="seats">Seats: </p>
+            <p id="total-price">Total: </p>
+          </div>
+
+        <form id="payment-form">
+            <h3>Payment Information</h3>
+            <div class="form-group">
+                <label for="card-name">Name on Card</label>
+                <input type="text" id="card-name" required>
+            </div>
+            <div class="form-group">
+                <label for="card-number">Card Number</label>
+                <input type="text" id="card-number" placeholder="1234 5678 9012 3456" required>
+            </div>
+            <div class="form-group-row">
+                <div class="form-group">
+                    <label for="expiry-date">Expiry Date</label>
+                    <input type="text" id="expiry-date" placeholder="MM/YY" required>
+                </div>
+                <div class="form-group">
+                    <label for="cvv">CVV</label>
+                    <input type="text" id="cvv" placeholder="123" required>
+                </div>
+            </div>
+            <button type="submit" class="btn-pay">Pay Now</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 QuickFlicks. All rights reserved.</p>
+    </footer>
+
+    <script src="js/payment.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!-- confirmation.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickFlicks - Booking Confirmation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <img class="logo" src="Logos/logo-removebg-preview.png" alt="QuickFlicks Logo">
+    <div class="header-1">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="movies.html" class="nav-link">Movies</a>
+      <a href="locations.html" class="nav-link">Locations</a>
+    </div>
+    <div class="header-2">
+      <a href="movies.html" class="nav-link">Buy Tickets</a>
+      <a href="login.html" class="nav-link">Login</a>
+      <a href="register.html" class="nav-link">Register</a>
+    </div>
+  </header>
+
+
+    <main class="confirmation-container">
+        <div class="confirmation-card">
+            <h2>🎉 Booking Confirmed!</h2>
+            <!-- Modify the confirmation details section -->
+            <div class="confirmation-details">
+              <p id="confirmation-ref">Reference Number: </p>
+              <p id="confirmation-movie">Movie: </p>
+              <p id="confirmation-cinema">Cinema: </p>
+              <p id="confirmation-theater">Theater Type: </p>
+              <p id="confirmation-date">Booking Date: </p>
+              <p id="confirmation-showtime">Showtime: </p>
+              <p id="confirmation-seats">Seats: </p>
+              <p id="confirmation-total">Total Price: </p>
+            </div>
+            
+            <!-- Add this to your actions div -->
+            <div class="actions">
+              <button id="print-ticket" class="btn-secondary">
+                <i class="fas fa-print"></i> Print Ticket
+              </button>
+              <a href="review.html" class="btn-primary">
+                <i class="fas fa-star"></i> Give a Review
+              </a>
+              <button id="home-button" class="btn-primary">
+                <i class="fas fa-home"></i> Back to Home
+              </button>
+</div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 QuickFlicks. All rights reserved.</p>
+    </footer>
+
+    <script src="js/confirmation.js"></script>
+</body>
+</html>

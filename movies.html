@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Now Showing - QuickFlicks</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="Logos/1.jpeg" type="image/jpeg">
+</head>
+<body>
+  <header>
+    <img class="logo" src="Logos/logo-removebg-preview.png" alt="QuickFlicks Logo">
+    <div class="header-1">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="movies.html" class="nav-link">Movies</a>
+      <a href="locations.html" class="nav-link">Locations</a>
+    </div>
+    <div class="header-2">
+      <a href="movies.html" class="nav-link">Buy Tickets</a>
+      <a href="login.html" class="nav-link">Login</a>
+      <a href="register.html" class="nav-link">Register</a>
+    </div>
+  </header>
+
+  <main class="movies-main">
+    <section class="filters-section">
+      <div class="container">
+        <div class="filter-group">
+          <label for="genre-filter"><i class="fas fa-tags"></i> Genre:</label>
+          <select id="genre-filter" class="filter-select">
+            <option value="all">All Genres</option>
+            <option value="28">Action</option>
+            <option value="12">Adventure</option>
+            <option value="16">Animation</option>
+            <option value="35">Comedy</option>
+            <option value="80">Crime</option>
+            <option value="18">Drama</option>
+            <option value="10751">Family</option>
+            <option value="14">Fantasy</option>
+            <option value="27">Horror</option>
+            <option value="9648">Mystery</option>
+            <option value="10749">Romance</option>
+            <option value="878">Science Fiction</option>
+            <option value="53">Thriller</option>
+          </select>
+        </div>
+        
+        <div class="filter-group">
+          <label for="date-filter"><i class="far fa-calendar-alt"></i> Date:</label>
+          <input type="date" id="date-filter" class="filter-input">
+        </div>
+        
+        <div class="filter-group">
+          <label for="sort-filter"><i class="fas fa-sort"></i> Sort By:</label>
+          <select id="sort-filter" class="filter-select">
+            <option value="popular">Popularity</option>
+            <option value="rating">Rating</option>
+            <option value="date">Release Date</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <section class="movies-grid-section">
+      <div class="container">
+        <h1>Now Showing in Theaters</h1>
+        <div class="movies-grid" id="movies-container">
+          <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Loading movies...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

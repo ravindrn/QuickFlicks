@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Cinema - QuickFlicks</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="Logos/1.jpeg" type="image/jpeg">
+  <style>
+    /* Additional styles for cinema selection page */
+    .cinema-selection {
+      padding: 150px 5% 50px;
+      background-color: #0D1321;
+    }
+
+    .cinema-selection h1 {
+      color: #00FFFF;
+      margin-bottom: 40px;
+      text-align: center;
+      font-size: 2.5rem;
+    }
+
+    .cinema-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .cinema-card {
+      background: rgba(26, 26, 26, 0.8);
+      border-radius: 10px;
+      padding: 25px;
+      text-decoration: none;
+      color: #EAEAEA;
+      transition: all 0.3s;
+      border: 1px solid rgba(0, 255, 255, 0.2);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .cinema-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,255,255,0.2);
+      border-color: #00FFFF;
+    }
+
+    .cinema-card h2 {
+      color: #00FFFF;
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+
+    .cinema-card p {
+      margin-bottom: 15px;
+      color: #AAAAAA;
+    }
+
+    .cinema-features {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .cinema-features span {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      background: rgba(255, 20, 147, 0.2);
+      padding: 5px 10px;
+      border-radius: 20px;
+    }
+
+    .cinema-features i {
+      color: #00FFFF;
+    }
+
+    @media (max-width: 768px) {
+      .cinema-options {
+        grid-template-columns: 1fr;
+      }
+      
+      .cinema-selection {
+        padding: 120px 5% 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img class="logo" src="Logos/logo-removebg-preview.png" alt="QuickFlicks Logo">
+    <div class="header-1">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="movies.html" class="nav-link">Movies</a>
+      <a href="locations.html" class="nav-link">Locations</a>
+    </div>
+    <div class="header-2">
+      <a href="movies.html" class="nav-link">Buy Tickets</a>
+      <a href="login.html" class="nav-link">Login</a>
+      <a href="register.html" class="nav-link">Register</a>
+    </div>
+  </header>
+
+  <main class="cinema-selection">
+    <h1>Where would you like to watch <span id="selected-movie">Movie</span>?</h1>
+    <div class="cinema-options">
+      <a href="select-theater.html?cinema=malabe" class="cinema-card" data-cinema="malabe">
+        <h2>QuickFlicks Malabe</h2>
+        <p><i class="fas fa-map-marker-alt"></i> Malabe, Sri Lanka</p>
+        <div class="cinema-features">
+          <span><i class="fas fa-film"></i> 3 Theaters</span>
+          <span><i class="fas fa-star"></i> IMAX Experience</span>
+          <span><i class="fas fa-couch"></i> Luxury Seating</span>
+        </div>
+      </a>
+      
+      <a href="select-theater.html?cinema=bambalapitiya" class="cinema-card" data-cinema="bambalapitiya">
+        <h2>QuickFlicks Bambalapitiya</h2>
+        <p><i class="fas fa-map-marker-alt"></i> Bambalapitiya, Sri Lanka</p>
+        <div class="cinema-features">
+          <span><i class="fas fa-film"></i> 4 Theaters</span>
+          <span><i class="fas fa-crown"></i> VIP Lounge</span>
+          <span><i class="fas fa-utensils"></i> Dining Service</span>
+        </div>
+      </a>
+      
+      <a href="select-theater.html?cinema=negombo" class="cinema-card" data-cinema="negombo">
+        <h2>QuickFlicks Negombo</h2>
+        <p><i class="fas fa-map-marker-alt"></i> Negombo, Sri Lanka</p>
+        <div class="cinema-features">
+          <span><i class="fas fa-film"></i> 2 Theaters</span>
+          <span><i class="fas fa-umbrella-beach"></i> Ocean View</span>
+          <span><i class="fas fa-parking"></i> Free Parking</span>
+        </div>
+      </a>
+    </div>
+  </main>
+
+  <script>
+    // Get movie title from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const movieTitle = urlParams.get('movie');
+    if (movieTitle) {
+      document.getElementById('selected-movie').textContent = decodeURIComponent(movieTitle);
+      
+      // Update cinema links to include movie title
+      document.querySelectorAll('.cinema-card').forEach(card => {
+        const currentHref = card.getAttribute('href');
+        card.setAttribute('href', `${currentHref}&movie=${movieTitle}`);
+      });
+    }
+
+    
+  </script>
+</body>
+</html>

@@ -1,0 +1,389 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #0D1321;
+  color: #EAEAEA;
+  text-align: center;
+  margin: 0;
+}
+
+h1 {
+  color: #00FFFF;
+  text-shadow: 0px 0px 10px #00FFFF;
+  font-size: 28px;
+}
+
+/* Theater Container */
+.theater-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Seat Layout */
+.seat-layout {
+  display: grid;
+  gap: 5px;  /* Reduced gap */
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  border: 2px solid #00FFFF;
+  box-shadow: 0px 0px 15px #00FFFF;
+  justify-content: center;
+  width: 100vw;
+  max-width: 100%;
+}
+
+/* Seat Styling */
+.seat {
+  width: 40px;
+  height: 40px;
+  background-color: #222;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  border: 1px solid #00FFFF;
+  box-shadow: 0px 0px 5px #00FFFF;
+  text-shadow: 0px 0px 5px #00FFFF;
+}
+
+/* Aisle Space */
+.aisle {
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  pointer-events: none;
+}
+
+/* Seat Hover Effect */
+.seat:hover {
+  background-color: #00FFFF;
+  color: #0D1321;
+  box-shadow: 0px 0px 10px #00FFFF;
+  transform: scale(1.1);
+}
+
+/* Selected Seat */
+.seat.selected {
+  background-color: #FF1493;
+  border-color: #FF1493;
+  box-shadow: 0px 0px 15px #FF1493;
+  text-shadow: 0px 0px 5px #FF1493;
+}
+
+/* Occupied Seats */
+.seat.occupied {
+  background-color: #555;
+  color: #EAEAEA;
+  border-color: #999;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+
+
+
+/* Screen Styling */
+.screen {
+  width: 80%;
+  height: 50px;
+  background: linear-gradient(to bottom, #00FFFF, #007BFF);
+  margin: 20px 0;
+  text-align: center;
+  line-height: 50px;
+  color: #0D1321;
+  font-weight: bold;
+  border-radius: 10px;
+  text-shadow: 0px 0px 10px #FFF;
+  box-shadow: 0px 0px 15px #00FFFF;
+}
+
+/* Booking Button */
+button {
+  margin-top: 20px;
+  padding: 12px 24px;
+  background: linear-gradient(45deg, #00FFFF, #FF1493);
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease-in-out;
+  text-shadow: 0px 0px 5px #000;
+  box-shadow: 0px 0px 10px #00FFFF;
+}
+
+button:hover {
+  background: linear-gradient(45deg, #FF1493, #00FFFF);
+  transform: scale(1.1);
+  box-shadow: 0px 0px 20px #FF1493;
+}
+
+
+/* Additional styles for VIP and Premium seats */
+.seat.vip {
+  background-color: #9400D3;
+  border-color: #9400D3;
+  box-shadow: 0px 0px 5px #9400D3;
+}
+
+.seat.premium {
+  background-color: #FF8C00;
+  border-color: #FF8C00;
+  box-shadow: 0px 0px 5px #FF8C00;
+}
+
+.vip-badge, .premium-badge {
+  display: block;
+  font-size: 8px;
+  margin-top: 2px;
+  color: white;
+}
+
+/* Screen variations */
+.premium-theater .screen {
+  background: linear-gradient(to bottom, #FF1493, #9400D3);
+}
+
+.three-d-theater .screen {
+  background: linear-gradient(to bottom, #00FFFF, #007BFF);
+}
+
+.imax-theater .screen {
+  background: linear-gradient(to bottom, #FF8C00, #FF4500);
+}
+
+@media (max-width: 1024px) {
+  .seat-layout {
+    grid-template-columns: repeat(10, 1fr); /* Reduce columns for tablets */
+    grid-template-rows: repeat(12, 35px);
+    max-width: 90%;
+  }
+
+  .seat {
+    width: 30px;
+    height: 30px;
+    font-size: 10px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .seat-layout {
+    grid-template-columns: repeat(8, 1fr); /* Even fewer columns on smaller devices */
+    grid-template-rows: repeat(15, 30px);
+    max-width: 95%;
+  }
+
+  .seat {
+    width: 28px;
+    height: 28px;
+    font-size: 10px;
+  }
+
+  .screen {
+    width: 90%;
+    font-size: 16px;
+    padding: 8px;
+  }
+
+  button {
+    font-size: 13px;
+    padding: 7px 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .seat-layout {
+    grid-template-columns: repeat(6, 1fr); /* Mobile layout */
+    grid-template-rows: repeat(20, 28px);
+    gap: 4px;
+  }
+
+  .seat {
+    width: 26px;
+    height: 26px;
+    font-size: 9px;
+  }
+
+  .screen {
+    font-size: 14px;
+    padding: 6px;
+  }
+
+  button {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}
+
+/* Seat selection styles */
+.seat-selection {
+  padding: 150px 5% 50px;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.booking-info {
+  background: rgba(26, 26, 26, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  text-align: left;
+}
+
+.booking-info p {
+  margin: 10px 0;
+  font-size: 1.1rem;
+}
+
+.screen {
+  width: 80%;
+  height: 30px;
+  margin: 0 auto 40px;
+  background: linear-gradient(to right, #0D1321, #00FFFF, #0D1321);
+  color: #0D1321;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+}
+
+.seats-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.seat-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.seat {
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+.seat.available {
+  background: rgba(0, 255, 255, 0.2);
+  border: 1px solid #00FFFF;
+}
+
+.seat.available:hover {
+  background: rgba(0, 255, 255, 0.4);
+  transform: scale(1.1);
+}
+
+.seat.selected {
+  background: #FF1493;
+  border: 1px solid #FF1493;
+}
+
+.seat.booked {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  cursor: not-allowed;
+}
+
+.seat.premium {
+  border: 1px solid #FFD700;
+  color: #FFD700;
+}
+
+.seat-legend {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legend-item .seat {
+  cursor: default;
+}
+
+#confirm-booking {
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .seat {
+    width: 25px;
+    height: 25px;
+    font-size: 0.6rem;
+  }
+  
+  .seat-legend {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+}
+
+/* Add to your theater CSS file */
+.date-selection {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.date-selection label {
+  display: block;
+  margin-bottom: 8px;
+  color: #00FFFF;
+  font-weight: bold;
+}
+
+.date-selection input[type="date"] {
+  background: rgba(0, 0, 0, 0.7);
+  color: #EAEAEA;
+  border: 1px solid #00FFFF;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 1rem;
+  max-width: 250px;
+  margin: 0 auto;
+  display: block;
+}
+
+.date-selection input[type="date"]:focus {
+  outline: none;
+  border-color: #FF1493;
+  box-shadow: 0 0 10px rgba(255, 20, 147, 0.5);
+}
+
+/* Hide calendar icon in some browsers */
+.date-selection input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}

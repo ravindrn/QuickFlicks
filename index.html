@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuickFlicks - Reserve. Relax. Enjoy.</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="Logos/1.jpeg" type="image/jpeg">
+</head>
+<body>
+  <header>
+    <img class="logo" src="Logos/logo-removebg-preview.png" alt="QuickFlicks Logo">
+    <div class="header-1">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="movies.html" class="nav-link">Movies</a>
+      <a href="locations.html" class="nav-link">Locations</a>
+    </div>
+    <div class="header-2">
+      <a href="movies.html" class="nav-link">Buy Tickets</a>
+      <a href="login.html" class="nav-link">Login</a>
+      <a href="register.html" class="nav-link">Register</a>
+    </div>
+  </header>
+
+  <!-- Hero Carousel -->
+  <div class="hero-container">
+    <div class="hero-slide">
+      <div class="movie-overlay">
+        <h1 id="movie-title">Featured Movies</h1>
+        <p id="movie-overview">Loading trending movies...</p>
+        <div class="hero-buttons">
+          <a id="trailer-button" href="#" class="btn trailer-btn">
+            <i class="fas fa-play"></i> Watch Trailer
+          </a>
+          <a id="hero-buy-tickets" href="select-cinema.html" class="btn buy-tickets-btn">
+            <i class="fas fa-ticket-alt"></i> Buy Tickets
+          </a>
+        </div>
+      </div>
+    </div>
+    <button id="prev-hero" class="hero-nav-arrow left-arrow">&#9664;</button>
+    <button id="next-hero" class="hero-nav-arrow right-arrow">&#9654;</button>
+  </div>
+
+  <!-- Movie Grids -->
+  <div class="movie-grids">
+    <div class="movie-grid now-showing">
+      <h2>Now Showing</h2>
+      <div class="grid-container" id="now-showing-movies">
+        <div class="loading">Loading movies...</div>
+      </div>
+    </div>
+    
+    <div class="movie-grid coming-soon">
+      <h2>Coming Soon</h2>
+      <div class="grid-container" id="coming-soon-movies">
+        <div class="loading">Loading upcoming movies...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 QuickFlicks. All Rights Reserved.</p>
+      <p>Contact us at: info@quickflicks.com</p>
+      <p>
+        <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
